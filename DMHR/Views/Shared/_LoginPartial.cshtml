@@ -8,7 +8,7 @@
     <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
+                <a class="" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
             </li>
             <li>
                 <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
@@ -18,8 +18,25 @@
 }
 else
 {
-    <ul class="nav navbar-nav navbar-right">
-        <li><a asp-area="Identity" asp-page="/Account/Register">Register</a></li>
-        <li><a asp-area="Identity" asp-page="/Account/Login">Login</a></li>
-    </ul>
+    <li class="treeview">
+        <a href="#">
+            <i class="fa fa-link"></i> <span>Account</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li>
+                @*<div class="pull-left">*@
+                <a class="" asp-area="Identity" asp-page="/Account/Register"><span>Register</span></a>
+                @*</div>*@
+            </li>
+            <li>
+                @*<div class="pull-right">*@
+                <a class="" asp-area="Identity" asp-page="/Account/Login"><span>Login</span></a>
+                @*</div>*@
+            </li>
+
+        </ul>
+    </li>
 }
