@@ -1,0 +1,57 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+<section class="content-header">
+    <h2 class="login-logo">@ViewData["Title"]</h2>
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h4 class="login-box-msg">Create a new account</h4>
+
+                </div>
+                <form class="" role="form" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                    <div class="login-box-body">
+                       
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group has-feedback">
+                            <label asp-for="Input.Email"></label>
+                            <input asp-for="Input.Email" class="form-control" />
+                            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label asp-for="Input.Password"></label>
+                            <input asp-for="Input.Password" class="form-control" />
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group has-feedback">
+                            <label asp-for="Input.ConfirmPassword"></label>
+                            <input asp-for="Input.ConfirmPassword" class="form-control" />
+                            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Register</button>
+
+                    </div>
+                   
+                </form>
+            </div>
+           
+        </div>
+    </div>
+</section>
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
