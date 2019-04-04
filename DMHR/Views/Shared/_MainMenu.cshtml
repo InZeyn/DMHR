@@ -4,23 +4,49 @@
 }
 
 <ul class="sidebar-menu" data-widget="tree">
-    <li class="header">HEADER</li>
-    <!-- Optionally, you can add icons to the links -->
-    <li class="active"> <a asp-area="" asp-controller="Home" asp-action="Index"> <i class="fa fa-link"></i><span>Home</span> </a></li>
-    <li><a asp-area="" asp-controller="Home" asp-action="Contact"> <i class="fa fa-link"></i><span>Contacts</span> </a></</li>
+    <li class="header"></li>
+    <li class="active"> <a asp-area="" asp-controller="Home" asp-action="Index"> <i class="glyphicon glyphicon-home"></i><span>Home</span> </a></li>
+    <li class="header">Mantenimiento</li>
     <li class="treeview">
-        <a href="/Contacts">
-            <i class="fa fa-link"></i> <span>Multilevel</span>
+        <a href="/Empleados">
+            <i class="glyphicon glyphicon-th-list"></i> <span>Empleados</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-            <li><a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></li>
+            <li><a asp-area="" asp-controller="Empleados" asp-action="Index">Lista de Empleados</a></li>
+            <li><a asp-area="" asp-controller="Empleados" asp-action="Create">Agregar Empleado</a></li>
         </ul>
     </li>
-    <li class="header">ACCOUNT</li>
+    <li class="treeview">
+        <a href="/Cargoes">
+            <i class="glyphicon glyphicon-th"></i> <span>Cargos</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a asp-area="" asp-controller="Cargos" asp-action="Index">Cargos Existentes</a></li>
+            <li><a asp-area="" asp-controller="Cargos" asp-action="Create">Crear Cargo</a></li>
+        </ul>
+    </li>
+    <li class="treeview">
+        <a href="/Departamentoes">
+            <i class="glyphicon glyphicon-th-large"></i> <span>Departamentos</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li><a asp-area="" asp-controller="Departamentos" asp-action="Index">Lista de Departamentos</a></li>
+            <li><a asp-area="" asp-controller="Departamentos" asp-action="Create">Añadir Departamento</a></li>
+        </ul>
+    </li>
+    <li class="header">Procesos</li>
+    <li class="header">Informes</li>
+
+    <li class="header">Opciones de Usuario</li>
     <!-- Optionally, you can add icons to the links -->
     <partial name="_LoginPartial" />
 </ul>
