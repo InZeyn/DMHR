@@ -10,7 +10,7 @@
     <h2>Vacaciones</h2>
 
     <p>
-        <a asp-action="Create">Agregar Vacaciones</a>
+        <a asp-action="Create">Registrar Vacaciones</a>
     </p>
 </section>
 
@@ -84,9 +84,21 @@
                                         @Html.DisplayFor(modelItem => item.Empleado.Apellido)
                                     </td>
                                     <td>
-                                        <a asp-action="Edit" asp-route-id="@item.VacacionId">Edit</a> |
-                                        <a asp-action="Details" asp-route-id="@item.VacacionId">Details</a> |
-                                        <a asp-action="Delete" asp-route-id="@item.VacacionId">Delete</a>
+                                        <div class="margin">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-default"><a asp-action="Details" asp-route-id="@item.VacacionId">Details</a></button>
+                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                    <span class="caret"></span>
+                                                    <span class="sr-only">Toggle Dropdown</span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a asp-action="Edit" asp-route-id="@item.VacacionId">Edit</a></li>
+                                                    <li><a asp-action="Details" asp-route-id="@item.VacacionId">Details</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a asp-action="Delete" class="bg-red-active " asp-route-id="@item.VacacionId">Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             }
