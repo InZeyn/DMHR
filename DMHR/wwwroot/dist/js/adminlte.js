@@ -498,7 +498,7 @@ throw new Error('AdminLTE requires jQuery')
         $this.data(DataKey, (data = new DirectChat($this)));
       }
 
-      if (typeof option == 'string') data.toggle($this);
+      if (typeof option === 'string') data.toggle($this);
     });
   }
 

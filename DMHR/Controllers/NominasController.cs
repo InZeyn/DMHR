@@ -44,21 +44,21 @@ namespace DMHR.Controllers
         }
 
         // GET: Nominas/CalculoNomina
-        public async Task<IActionResult> CalculoNomina()
+        public async Task<IActionResult> Create()
         {
-            var calculoNomina =  _context.Empleados.Where(s => s.IsActive == true)
-                        .Include(s => s.Salario).Sum(s => s.Salario);
+            var calculoNomina = await _context.Empleados.Where(s => s.IsActive == true)
+                        .Include(s => s.Salario).SumAsync(s => s.Salario);
 
             ViewBag.MontoTotal =  calculoNomina;
-             _context.SaveChanges();
+            //await _context.SaveChangesAsync();
             return View();
         }
 
-        // GET: Nominas/Create
-        public IActionResult Create()
-        {
-            return View();
-        }
+        //// GET: Nominas/Create
+        //public IActionResult Create()
+        //{
+        //    return View();
+        //}
 
         // POST: Nominas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
