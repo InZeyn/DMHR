@@ -43,6 +43,17 @@ namespace DMHR.Controllers
             return View(nomina);
         }
 
+        // GET: Nominas/CalculoNomina
+        public async Task<IActionResult> CalculoNomina()
+        {
+            var calculoNomina =  _context.Empleados.Where(s => s.IsActive == true)
+                        .Include(s => s.Salario).Sum(s => s.Salario);
+
+            ViewBag.MontoTotal =  calculoNomina;
+             _context.SaveChanges();
+            return View();
+        }
+
         // GET: Nominas/Create
         public IActionResult Create()
         {
