@@ -1,74 +1,121 @@
 ﻿@model DMHR.Models.Empleado
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<section class="content-header">
+    <h2 class="login-logo">@ViewData["Title"]</h2>
+    
+</section>
+<!-- Main content -->
 
-<h4>Empleado</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CodigoEmpleado" class="control-label"></label>
-                <input asp-for="CodigoEmpleado" class="form-control" />
-                <span asp-validation-for="CodigoEmpleado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Nombre" class="control-label"></label>
-                <input asp-for="Nombre" class="form-control" />
-                <span asp-validation-for="Nombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Apellido" class="control-label"></label>
-                <input asp-for="Apellido" class="form-control" />
-                <span asp-validation-for="Apellido" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Telefono" class="control-label"></label>
-                <div class=" input-group">
-                    <div class="input-group-addon">
-                        <div class="fa fa-phone"></div>
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Empleado</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="box-body">
+
+                        <div class="form-group">
+                            <label asp-for="Nombre" class="control-label"></label>
+                            <input asp-for="Nombre" type="text" placeholder="Nombre" class="form-control" />
+                            <span asp-validation-for="Nombre" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Apellido" class="control-label"></label>
+                            <input asp-for="Apellido" type="text" placeholder="Apellido" class="form-control" />
+                            <span asp-validation-for="Apellido" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Telefono" class="control-label"></label>
+                            <div class=" input-group">
+                                <div class="input-group-addon">
+                                    <div class="fa fa-phone"></div>
+                                </div>
+                                <input asp-for="Telefono" class="form-control" placeholder="Telefono" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" />
+                                <span asp-validation-for="Telefono" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <hr />
+                        <div class="form-group">
+                            <label asp-for="CodigoEmpleado" class="control-label"></label>
+                            <input asp-for="CodigoEmpleado" type="number" min="1" class="form-control" />
+                            <span asp-validation-for="CodigoEmpleado" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FechaIngreso" class="control-label"></label>
+                            <div class="input-group">
+                                <div class="input-group-addon"><div class="fa fa-calendar"></div> </div>
+                                <input asp-for="FechaIngreso" type="date" placeholder="Fecha de Ingreso" class="form-control" />
+                            </div>
+
+                            <span asp-validation-for="FechaIngreso" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Salario" class="control-label"></label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+
+                                <input asp-for="Salario" type="number" min="0" class="form-control" />
+
+                                <span class="input-group-addon"><b>.00</b></span>
+                            </div>
+                            <span asp-validation-for="Salario" class="text-danger"></span>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label class="bg-danger danger">
+                                    <input asp-for="IsActive" type="checkbox" checked="checked" />
+                                    Este usuario es <b>Activo</b>?
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <div class="selection">
+                                        @Html.DropDownListFor(model => model.CargoNombre,(SelectList)ViewBag.Cargos,
+                                       "Seleccione",
+                                       new { @class = "form-control" } )
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    @Html.DropDownListFor(model => model.DepartamentoNombre,(SelectList)ViewBag.Departamentos,
+                                    "Seleccione",
+                                    new { @class = "form-control" })
+                                   
+                                </div>
+                            </div>
+
+
+                        </div>
+
                     </div>
-                    <input asp-for="Telefono" class="form-control" data-inputmask="&quot;mask&quot;: &quot;(999) 999-9999&quot;" data-mask="" />
-                    <span asp-validation-for="Telefono" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaIngreso" class="control-label"></label>
-                <input asp-for="FechaIngreso" class="form-control" />
-                <span asp-validation-for="FechaIngreso" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Salario" class="control-label"></label>
-                <input asp-for="Salario" class="form-control" />
-                <span asp-validation-for="Salario" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                @Html.DropDownListFor(model => model.CargoNombre,(SelectList)ViewBag.Cargos)
-            </div>
-            <div class="form-group">
-                @Html.DropDownListFor(model => model.DepartamentoNombre,(SelectList)ViewBag.Departamentos)
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-</form>
-    </div>
-</div>
+                    <!-- /.box-body -->
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </div>
+       
+    </div>
+
+</section>
+    
 
