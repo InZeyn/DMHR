@@ -39,7 +39,7 @@
                                     @Html.DisplayNameFor(model => model.CodigoEmpleado)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Nombre)
+                                    @Html.DisplayNameFor(model => model.Nombre) Completo
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.CargoNombre)
@@ -67,7 +67,9 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.CodigoEmpleado)
+                                        <i class="fa fa-hashtag">
+                                            @Html.DisplayFor(modelItem => item.CodigoEmpleado)
+                                        </i>
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Nombre)
@@ -80,17 +82,23 @@
                                         @Html.DisplayFor(modelItem => item.DepartamentoNombre)
                                     </td>
                                     <td>
-                                        @*@Html.DisplayFor(modelItem => item.Telefono)*@
-                                        @String.Format("({0}) {1}-{2}"
-                                        ,item.Telefono.Substring(0, 3)
-                                        ,item.Telefono.Substring(3, 3)
-                                        ,item.Telefono.Substring(6,item.Telefono.Length - 6))
+                                        <i class="fa fa-phone">
+                                            @String.Format("({0}) {1}-{2}"
+                                                         ,item.Telefono.Substring(0, 3)
+                                                         ,item.Telefono.Substring(3, 3)
+                                                         ,item.Telefono.Substring(6,item.Telefono.Length - 6))
+                                                                            </i>
+                                        
                                     </td>
                                     <td>
-                                        @item.FechaIngreso.ToString("dd/MM/yyyy")
+                                        <i class=" fa fa-calendar">
+                                            @item.FechaIngreso.ToString("dd/MM/yyyy")
+                                        </i>
+                                      
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Salario)
+                                        
+                                        <i class="fa fa-dollar">@Html.DisplayFor(modelItem => item.Salario)</i> 
                                     </td>
                                     <td>
                                         @if (item.IsActive == true)
