@@ -80,10 +80,14 @@
                                         @Html.DisplayFor(modelItem => item.DepartamentoNombre)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Telefono)
+                                        @*@Html.DisplayFor(modelItem => item.Telefono)*@
+                                        @String.Format("({0}) {1}-{2}"
+                                        ,item.Telefono.Substring(0, 3)
+                                        ,item.Telefono.Substring(3, 3)
+                                        ,item.Telefono.Substring(6,item.Telefono.Length - 6))
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.FechaIngreso)
+                                        @item.FechaIngreso.ToString("dd/MM/yyyy")
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Salario)
