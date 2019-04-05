@@ -4,39 +4,78 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<section class="content-header">
+    <h2>Departamentos</h2>
 
-<h2>Index</h2>
+    <p>
+        <a asp-action="Create">Añadir Departamento</a>
+    </p>
+</section>
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Departamento Existente</h3>
+                    <div class="box-tools">
+                        <div class="input-group input-group-sm" style="width: 150px;">
+                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search" />
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body table table-striped ">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.CodigoDepartamento)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DepartamentoNombre)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.CodigoDepartamento)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.DepartamentoNombre)
+                                    </td>
+                                    <td>
+                                        <div class="margin">
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-default"><a asp-action="Details" asp-route-id="@item.DepartamentoId">Details</a></button>
+                                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                                    <span class="caret"></span>
+                                                    <span class="sr-only">Toggle Dropdown</span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a asp-action="Edit" asp-route-id="@item.DepartamentoId">Edit</a></li>
+                                                    <li><a asp-action="Details" asp-route-id="@item.DepartamentoId">Details</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a asp-action="Delete" class="bg-red-active " asp-route-id="@item.DepartamentoId">Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.CodigoDepartamento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DepartamentoNombre)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodigoDepartamento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DepartamentoNombre)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.DepartamentoId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.DepartamentoId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.DepartamentoId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+
+</section>
