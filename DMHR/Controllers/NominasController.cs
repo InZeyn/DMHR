@@ -43,29 +43,23 @@ namespace DMHR.Controllers
             return View(nomina);
         }
 
-        // GET: Nominas/CalculoNomina
+        // GET: Nominas/Create
         public async Task<IActionResult> Create()
         {
-            var calculoNomina = await _context.Empleados.Where(s => s.IsActive == true)
-                        .Include(s => s.Salario).SumAsync(s => s.Salario);
+            var total = await _context.Empleados.Where(e => e.IsActive == true)
+                .Include(e => e.Salario)
+                .SumAsync(e => e.Salario);
 
-            ViewBag.MontoTotal =  calculoNomina;
-            //await _context.SaveChangesAsync();
+            ViewBag.MontoTotal = total;
             return View();
         }
-
-        //// GET: Nominas/Create
-        //public IActionResult Create()
-        //{
-        //    return View();
-        //}
 
         // POST: Nominas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NominaId,Year,Month,MontoTotal")] Nomina nomina)
+        public async Task<IActionResult> Create([Bind("NominaId,Date,MontoTotal")] Nomina nomina)
         {
             if (ModelState.IsValid)
             {
@@ -97,7 +91,7 @@ namespace DMHR.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("NominaId,Year,Month,MontoTotal")] Nomina nomina)
+        public async Task<IActionResult> Edit(int id, [Bind("NominaId,Date,MontoTotal")] Nomina nomina)
         {
             if (id != nomina.NominaId)
             {

@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using DMHR.Data;
 using DMHR.Models;
+using System.Threading;
 
 namespace DMHR.Controllers
 {
     public class EmpleadosController : Controller
     {
         private readonly ApplicationDbContext _context;
+     
 
         public EmpleadosController(ApplicationDbContext context)
         {
@@ -22,6 +24,7 @@ namespace DMHR.Controllers
         // GET: Empleados
         public async Task<IActionResult> Index()
         {
+           
             return View(await _context.Empleados.ToListAsync());
         }
 

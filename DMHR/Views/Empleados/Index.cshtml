@@ -83,22 +83,23 @@
                                     </td>
                                     <td>
                                         <i class="fa fa-phone">
-                                            @String.Format("({0}) {1}-{2}"
-                                                         ,item.Telefono.Substring(0, 3)
-                                                         ,item.Telefono.Substring(3, 3)
-                                                         ,item.Telefono.Substring(6,item.Telefono.Length - 6))
-                                                                            </i>
-                                        
+                                            @Html.DisplayFor(modelItem => item.Telefono)
+                                            @*@String.Format("({0}) {1}-{2} x{3}"
+                                    ,item.Telefono.Substring(0, 3)
+                                    ,item.Telefono.Substring(3, 3)
+                                    ,item.Telefono.Substring(6, 4)
+                                    ,item.Telefono.Substring(10, 5))*@
+                                        </i>
                                     </td>
                                     <td>
                                         <i class=" fa fa-calendar">
                                             @item.FechaIngreso.ToString("dd/MM/yyyy")
                                         </i>
-                                      
+
                                     </td>
                                     <td>
-                                        
-                                        <i class="fa fa-dollar">@Html.DisplayFor(modelItem => item.Salario)</i> 
+
+                                        <i class="fa fa-dollar">@Html.DisplayFor(modelItem => item.Salario)</i>
                                     </td>
                                     <td>
                                         @if (item.IsActive == true)
@@ -117,13 +118,16 @@
                                     <td>
                                         <div class="margin">
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-default"><a asp-action="Details" asp-route-id="@item.EmpleadoId">Details</a></button>
+                                                <button type="button" class="btn btn-default">
+                                                    <a asp-action="Details" asp-route-id="@item.EmpleadoId">Details</a>
+                                                </button>
+                                               
                                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                     <span class="caret"></span>
                                                     <span class="sr-only">Toggle Dropdown</span>
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
-                                                    <li><a asp-action="Edit"  asp-route-id="@item.EmpleadoId">Edit</a></li>
+                                                    <li><a asp-action="Edit" asp-route-id="@item.EmpleadoId">Edit</a></li>
                                                     <li><a asp-action="Details" asp-route-id="@item.EmpleadoId">Details</a></li>
                                                     <li class="divider"></li>
                                                     <li><a asp-action="Delete" class="bg-red-active " asp-route-id="@item.EmpleadoId">Delete</a></li>
@@ -137,7 +141,7 @@
                     </table>
                 </div>
                 <div class="box-footer">
-
+                   
                 </div>
             </div>
         </div>

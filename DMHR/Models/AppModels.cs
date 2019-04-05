@@ -12,7 +12,7 @@ namespace DMHR.Models
         [Key]
         public int EmpleadoId { get; set; }
         [Required]
-        [Display(Name = "Cod-Emp")]
+        [Display(Name = "#Emp")]
         public int CodigoEmpleado { get; set; }
         [Required]
         public string Nombre { get; set; }
@@ -43,7 +43,7 @@ namespace DMHR.Models
         [Key]
         public int DepartamentoId { get; set; }
         [Required]
-        [Display(Name = "Codigo-Dep")]
+        [Display(Name = "#Dep")]
         public int CodigoDepartamento { get; set; }
         [Required]
         [Display(Name = "Departamento")]
@@ -64,14 +64,15 @@ namespace DMHR.Models
     public class Nomina
     {
         [Key]
-        public int NominaId { get; set; }
+        public int NominaId { get; set; }       
+
         [Required]
         [Column(TypeName = "Date")]
-        public DateTime Year { get; set; }
-        [Required]
-        [Column(TypeName = "Date")]
-        public DateTime Month { get; set; }
+        public DateTime Date { get;  set; }
+
+        [Display(Name = "Total")]
         public int MontoTotal { get; set; }
+
     }
 
     public class SalidadeEmpleado
@@ -84,9 +85,10 @@ namespace DMHR.Models
         [Column(TypeName = "Date")]
         public DateTime FechaSalida { get; set; }
 
-        public int EmpleadoId { get; set; }
         [Required]
-        public Empleado Empleado { get; set; }
+        public int EmpleadoId { get; set; }
+
+        public IList<Empleado> Empleados { get; set; }
     }
 
     public enum Salida
@@ -106,14 +108,12 @@ namespace DMHR.Models
         [Required]
         [Column(TypeName = "Date")]
         public DateTime Hasta { get; set; }
-        [Column(TypeName = "Date")]
-        public DateTime Date { get; set; }
+        public int Año { get; set; }
         public string Comentarios { get; set; }
         public bool IsPaid { get; set; }
-
-        public int EmpleadoId { get; set; }
         [Required]
-        public Empleado Empleado { get; set; }
+        public int EmpleadoId { get; set; }
+        public IList<Empleado> Empleados { get; set; }
     }
 
     public class Permiso
@@ -126,14 +126,12 @@ namespace DMHR.Models
         [Required]
         [Column(TypeName = "Date")]
         public DateTime Hasta { get; set; }
-        [Column(TypeName = "Date")]
-        public DateTime Date { get; set; }
+      
         public string Comentarios { get; set; }
         public bool IsPaid { get; set; }
-
-        public int EmpleadoId { get; set; }
         [Required]
-        public Empleado Empleado { get; set; }
+        public int EmpleadoId { get; set; }
+        public IList<Empleado> Empleados { get; set; }
     }
 
     public class Licencia
@@ -149,9 +147,8 @@ namespace DMHR.Models
         public string Motivo { get; set; }
         public string Comentarios { get; set; }
         public bool IsPaid { get; set; }
-
-        public int EmpleadoId { get; set; }
         [Required]
-        public Empleado Empleado { get; set; }
+        public int EmpleadoId { get; set; }
+        public IList<Empleado> Empleados { get; set; }
     }
 }
