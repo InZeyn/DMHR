@@ -96,10 +96,10 @@ namespace DMHR.Models
         Desahucio
     }
 
-    public class Vacaciones
+    public class Vacacion
     {
         [Key]
-        public int VacacionesId { get; set; }
+        public int VacacionId { get; set; }
         [Required]
         [Column(TypeName = "Date")]
         public DateTime Desde { get; set; }
@@ -116,10 +116,10 @@ namespace DMHR.Models
         public Empleado Empleado { get; set; }
     }
 
-    public class Permisos
+    public class Permiso
     {
         [Key]
-        public int PermisosId { get; set; }
+        public int PermisoId { get; set; }
         [Required]
         [Column(TypeName = "Date")]
         public DateTime Desde { get; set; }
@@ -136,10 +136,10 @@ namespace DMHR.Models
         public Empleado Empleado { get; set; }
     }
 
-    public class Licencias
+    public class Licencia
     {
         [Key]
-        public int LicenciasId { get; set; }
+        public int LicenciaId { get; set; }
         [Required]
         [Column(TypeName = "Date")]
         public DateTime Desde { get; set; }

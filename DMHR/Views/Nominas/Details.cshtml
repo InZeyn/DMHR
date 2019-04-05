@@ -1,0 +1,37 @@
+﻿@model DMHR.Models.Nomina
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Nomina</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Year)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Year)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Month)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Month)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoTotal)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MontoTotal)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.NominaId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
