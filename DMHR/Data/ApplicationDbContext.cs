@@ -19,9 +19,9 @@ namespace DMHR.Data
         public virtual DbSet<Cargo> Cargos { get; set; }
         public virtual DbSet<Nomina> Nominas { get; set; }
         public virtual DbSet<SalidadeEmpleado> SalidadeEmpleados { get; set; }
-        public virtual DbSet<Vacaciones> GetVacaciones { get; set; }
-        public virtual DbSet<Permisos> GetPermisos { get; set; }
-        public virtual DbSet<Licencias> GetLicencias { get; set; }
+        public virtual DbSet<Vacacion> Vacaciones { get; set; }
+        public virtual DbSet<Permiso> Permisos { get; set; }
+        public virtual DbSet<Licencia> Licencias { get; set; }
 
     }
 }
