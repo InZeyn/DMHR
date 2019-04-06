@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
 
 <section class="content-header">
@@ -86,10 +85,10 @@
                                         <i class="fa fa-phone">
                                             @Html.DisplayFor(modelItem => item.Telefono)
                                             @*@String.Format("({0}) {1}-{2} x{3}"
-                                    ,item.Telefono.Substring(0, 3)
-                                    ,item.Telefono.Substring(3, 3)
-                                    ,item.Telefono.Substring(6, 4)
-                                    ,item.Telefono.Substring(10, 5))*@
+                                                ,item.Telefono.Substring(0, 3)
+                                                ,item.Telefono.Substring(3, 3)
+                                                ,item.Telefono.Substring(6, 4)
+                                                ,item.Telefono.Substring(10, 5))*@
                                         </i>
                                     </td>
                                     <td>
@@ -122,7 +121,7 @@
                                                 <button type="button" class="btn btn-default">
                                                     <a asp-action="Details" asp-route-id="@item.EmpleadoId">Details</a>
                                                 </button>
-                                               
+
                                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                     <span class="caret"></span>
                                                     <span class="sr-only">Toggle Dropdown</span>
@@ -142,11 +141,11 @@
                     </table>
                 </div>
                 <div class="box-footer">
-                  
+
                 </div>
             </div>
         </div>
     </div>
-   
+
 
 </section>

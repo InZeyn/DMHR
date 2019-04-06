@@ -21,11 +21,18 @@ namespace DMHR.Controllers
             _context = context;
         }
 
-        // GET: Empleados
+        // GET: Empleados?isActive
         public async Task<IActionResult> Index()
         {
-           
-            return View(await _context.Empleados.ToListAsync());
+            var _indexContext = _context.Empleados.Where(e => e.IsActive).ToListAsync();
+            return View(await _indexContext);
+        }
+        
+        // GET: Empleados!isActive?
+        public async Task<IActionResult> Index2()
+        {
+            var _indexContext = _context.Empleados.Where(e => !e.IsActive).ToListAsync();
+            return View(await _indexContext);
         }
 
         // GET: Empleados/Details/5
@@ -44,6 +51,52 @@ namespace DMHR.Controllers
             }
 
             return View(empleado);
+        }
+
+        // GET: Empleados/Entry/
+       
+        public async Task<IActionResult> Entrys()
+        {
+
+            return  View(await _context.Empleados.Where(e => e.FechaIngreso == DateTime.Today).ToListAsync());
+        }
+
+        // GET: Empleados/Entry/04/04/2019
+        [HttpPost]
+        public async Task<IActionResult> Entrys(DateTime fechaIngreso)
+        {
+            if (fechaIngreso == null)
+            {
+                return NotFound();
+            }
+
+            var empleados = _context.Empleados
+                .Where(e => e.FechaIngreso.Month == fechaIngreso.Month && e.FechaIngreso.Year == fechaIngreso.Year);
+
+            return empleados == null ? NotFound() : (IActionResult)View(await empleados.ToListAsync());
+        }
+        
+        // GET: Empleados/Exit/
+       
+        public async Task<IActionResult> Exit()
+        {
+
+            return  View(await _context.Empleados.Where(e => e.FechaIngreso == DateTime.Today && !e.IsActive).ToListAsync());
+        }
+
+        // GET: Empleados/Entry/04/04/2019
+        [HttpPost]
+        public async Task<IActionResult> Exit(DateTime fechaIngreso)
+        {
+            if (fechaIngreso == null)
+            {
+                return NotFound();
+            }
+
+            var empleados = _context.Empleados
+                .Where(e => e.FechaIngreso.Month == fechaIngreso.Month && e.FechaIngreso.Year == fechaIngreso.Year && !e.IsActive);
+
+            return empleados == null ? NotFound() : (IActionResult)View(await empleados.ToListAsync());
         }
 
         //// GET: Empleados/Create
