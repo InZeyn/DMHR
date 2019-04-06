@@ -99,12 +99,6 @@ namespace DMHR.Controllers
             return empleados == null ? NotFound() : (IActionResult)View(await empleados.ToListAsync());
         }
 
-        //// GET: Empleados/Create
-        //public IActionResult Create()
-        //{
-        //    return View();
-        //}
-
         // GET: Empleados/Create
         public async Task<IActionResult> Create()
         {

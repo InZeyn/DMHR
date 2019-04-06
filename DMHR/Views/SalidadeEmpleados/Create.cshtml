@@ -1,0 +1,51 @@
+﻿@model DMHR.Models.SalidadeEmpleado
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<h4>SalidadeEmpleado</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TipoDeSalida" class="control-label"></label>
+                @Html.DropDownList("TipoDeSalida",
+                    new SelectList(Enum.GetValues(typeof(Salida))),
+                    "Select Salida",
+                    new { @class = "form-control" })
+                <span asp-validation-for="TipoDeSalida" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Motivo" class="control-label"></label>
+                <input asp-for="Motivo" class="form-control" />
+                <span asp-validation-for="Motivo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaSalida" class="control-label"></label>
+                <input asp-for="FechaSalida" type="date" class="form-control" />
+                <span asp-validation-for="FechaSalida" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmpleadoId" class="control-label"></label>
+                @Html.DropDownListFor(model => model.EmpleadoId,(SelectList)ViewBag.Empleados,
+                                    "Seleccione",
+                                    new { @class = "form-control" })
+                <span asp-validation-for="EmpleadoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
