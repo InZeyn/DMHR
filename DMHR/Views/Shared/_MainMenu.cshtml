@@ -15,9 +15,9 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a asp-area="" asp-controller="Departamentos" asp-action="Create"><i class="glyphicon glyphicon-check"></i>Añadir Departamento</a></li>
-            <li><a asp-area="" asp-controller="Cargos" asp-action="Create"><i class="glyphicon glyphicon-check"></i>Crear Cargo</a></li>
-            <li><a asp-area="" asp-controller="Empleados" asp-action="Create"><i class="glyphicon glyphicon-check"></i>Agregar Empleado</a></li>
+            <li><a asp-area="" asp-controller="Departamentos" asp-action="Create">Añadir Departamento</a></li>
+            <li><a asp-area="" asp-controller="Cargos" asp-action="Create">Crear Cargo</a></li>
+            <li><a asp-area="" asp-controller="Empleados" asp-action="Create">Agregar Empleado</a></li>
         </ul>
     </li>
     <li class="treeview">
@@ -28,11 +28,11 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            <li><a asp-area="" asp-controller="Nominas" asp-action="Create"><i class="glyphicon glyphicon-check"></i>Calculos de nominas</a></li>
-            <li><a asp-area="" asp-controller="SalidadeEmpleados" asp-action="Create"><i class="glyphicon glyphicon-check"></i>Salida de empleado</a></li>
-            <li><a asp-area="" asp-controller="Vacaciones" asp-action="Create">Registrar Vacaciones</a></li>
-            <li><a asp-area="" asp-controller="Permisos" asp-action="Create">Autorizar Permisos</a></li>
-            <li><a asp-area="" asp-controller="Licencias" asp-action="Create">Autorizar Licencia</a></li>
+            <li><a asp-area="" asp-controller="Nominas" asp-action="Create">Calculos de nomina</a></li>
+            <li><a asp-area="" asp-controller="SalidadeEmpleados" asp-action="Create">Salida de empleados</a></li>
+            <li><a asp-area="" asp-controller="Vacaciones" asp-action="Create">Vacaciones</a></li>
+            <li><a asp-area="" asp-controller="Permisos" asp-action="Create">Permisos</a></li>
+            <li><a asp-area="" asp-controller="Licencias" asp-action="Create">Licencias</a></li>
         </ul>
     </li>
     <li class="treeview">
@@ -43,21 +43,16 @@
             </span>
         </a>
         <ul class="treeview-menu">
-            
-            <li>
-               
-                <a asp-area="" asp-controller="Empleados" asp-action="Index"> <i class="glyphicon glyphicon-check"></i>Empleados Activos</a></li>
-            <li><a asp-area="" asp-controller="Empleados" asp-action="Index2"><i class="glyphicon glyphicon-check"></i>Empleados Inactivos</a></li>
-            <li><a asp-area="" asp-controller="Departamentos" asp-action="Index"><i class="glyphicon glyphicon-check"></i>Departamentos Existentes</a></li>
-            <li><a asp-area="" asp-controller="Cargos" asp-action="Index"><i class="glyphicon glyphicon-check"></i>Cargos de Empleados</a></li>
-            <li><a asp-area="" asp-controller="Empleados" asp-action="Entrys"><i class="glyphicon glyphicon-check"></i>Entrada de empleado</a></li>
-            <li><a asp-area="" asp-controller="Empleados" asp-action="Exit"><i class="glyphicon glyphicon-check"></i>Salida de empleados</a></li>
-            <li><a asp-area="" asp-controller="Permisos" asp-action="Index">Permisos autorizados</a></li>
+            <li><a asp-area="" asp-controller="Nominas" asp-action="Index">Registro de Nominas</a></li>
+            <li><a asp-area="" asp-controller="Empleados" asp-action="Index">Empleados Activos</a></li>
+            <li><a asp-area="" asp-controller="Empleados" asp-action="Index2">Empleados Inactivos</a></li>
+            <li><a asp-area="" asp-controller="Departamentos" asp-action="Index">Departamentos Existentes</a></li>
+            <li><a asp-area="" asp-controller="Cargos" asp-action="Index">Cargos Disponibles</a></li>
+            <li><a asp-area="" asp-controller="Empleados" asp-action="Entrys">Entradas de empleados</a></li>
+            <li><a asp-area="" asp-controller="Empleados" asp-action="Exit">Salida de empleados</a></li>
+            <li><a asp-area="" asp-controller="Permisos" asp-action="Index">Permisos</a></li>
         </ul>
     </li>
-
-
-
     <li class="header">Opciones de Usuario</li>
     <!-- Optionally, you can add icons to the links -->
     <partial name="_LoginPartial" />
