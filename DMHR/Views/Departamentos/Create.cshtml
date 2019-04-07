@@ -1,36 +1,52 @@
 ﻿@model DMHR.Models.Departamento
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Nuevo Departamento";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
-
-<h4>Departamento</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CodigoDepartamento" class="control-label"></label>
-                <input asp-for="CodigoDepartamento" class="form-control" />
-                <span asp-validation-for="CodigoDepartamento" class="text-danger"></span>
+<section class="content-header">
+    <h2 class="login-logo">@ViewData["Title"]</h2>
+    <ol class="breadcrumb">
+        <li><a asp-area="" asp-controller="Home" asp-action="Index"><i class="glyphicon glyphicon-home"></i><span>Home</span> </a></li>
+        <li> <a class="" asp-area="" asp-page="/Departamentos/Create"><i class="glyphicon glyphicon-th-list"></i><span>Mantenimiento</span></a></li>
+        <li> <a class="" asp-area="" asp-page="/Departamentos/Create"><span>Crear Departamento</span></a></li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Departamento</h3>
+                </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label asp-for="DepartamentoNombre" class="control-label">Nombre</label>
+                            <input asp-for="DepartamentoNombre" type="text" placeholder="Nombre" class="form-control" />
+                            <span asp-validation-for="DepartamentoNombre" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CodigoDepartamento" class="control-label"></label>
+                            <input asp-for="CodigoDepartamento" type="number" min="1" class="form-control" />
+                            <span asp-validation-for="CodigoDepartamento" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Crear</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="DepartamentoNombre" class="control-label"></label>
-                <input asp-for="DepartamentoNombre" class="form-control" />
-                <span asp-validation-for="DepartamentoNombre" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+</section>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 

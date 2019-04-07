@@ -8,7 +8,6 @@
 
 <section class="content-header">
     <h1>Empleados</h1>
-
     <p>
         <a asp-action="Create">Agregar Empleado</a>
     </p>
@@ -23,7 +22,7 @@
                     <h3 class="box-title">Lista de Empleados</h3>
                     <div class="box-tools">
                         <form asp-action="Index" method="get">
-                            <div class="input-group input-group-sm "     style="width: 150px;">
+                            <div class="input-group input-group-sm" style="width: 150px;">
                                 <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control pull-right" placeholder="Search" />
                                 <div class="input-group-btn">
                                     <button type="submit" value="Search" class="btn btn-default">
@@ -88,11 +87,6 @@
                                     <td>
                                         <i class="fa fa-phone">
                                             @Html.DisplayFor(modelItem => item.Telefono)
-                                            @*@String.Format("({0}) {1}-{2} x{3}"
-                                    ,item.Telefono.Substring(0, 3)
-                                    ,item.Telefono.Substring(3, 3)
-                                    ,item.Telefono.Substring(6, 4)
-                                    ,item.Telefono.Substring(10, 5))*@
                                         </i>
                                     </td>
                                     <td>
@@ -125,7 +119,6 @@
                                                 <button type="button" class="btn btn-default">
                                                     <a asp-action="Details" asp-route-id="@item.EmpleadoId">Details</a>
                                                 </button>
-                                               
                                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                     <span class="caret"></span>
                                                     <span class="sr-only">Toggle Dropdown</span>
@@ -145,11 +138,9 @@
                     </table>
                 </div>
                 <div class="box-footer">
-                  
+                    
                 </div>
             </div>
         </div>
     </div>
-   
-
 </section>

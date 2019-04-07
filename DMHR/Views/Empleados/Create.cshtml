@@ -1,19 +1,24 @@
 ﻿@model DMHR.Models.Empleado
 
 @{
-    ViewData["Title"] = "Crear";
+    ViewData["Title"] = "Nuevo Empleado";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <section class="content-header">
     <h2 class="login-logo">@ViewData["Title"]</h2>
-    
+    <ol class="breadcrumb">
+        <li><a asp-area="" asp-controller="Home" asp-action="Index"><i class="glyphicon glyphicon-home"></i><span>Home</span> </a></li>
+        <li> <a class="" asp-area="" asp-page="/Empleados/Create"><i class="glyphicon glyphicon-th-list"></i><span>Mantenimiento</span></a></li>
+        <li> <a class="" asp-area="" asp-page="/Empleados/Create"><span>Crear Empleado</span></a></li>
+    </ol>
 </section>
 <!-- Main content -->
 
 <section class="content container-fluid">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">Empleado</h3>
@@ -108,17 +113,14 @@
                     <!-- /.box-body -->
 
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary">Crear</button>
                     </div>
                 </form>
             </div>
-            <div>
-                <a asp-action="Index">Back to List</a>
-            </div>
         </div>
-       
+
     </div>
 
 </section>
-    
+
 
