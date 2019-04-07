@@ -7,7 +7,12 @@
 
 <section class="content-header">
     <h2 class="login-logo">@ViewData["Title"]</h2>
-   
+    <ol class="breadcrumb">
+        <li><a asp-area="" asp-controller="Home" asp-action="Index"><i class="glyphicon glyphicon-home"></i><span>Home</span> </a></li>
+        <li> <a class="" asp-area="Identity" asp-page="/Account/Login"><i class="fa fa-link"></i><span>Account</span></a></li>
+        <li> <a class="" asp-area="Identity" asp-page="/Account/Login"><span>Login</span></a></li>
+    </ol>
+
 </section>
 <!-- Main content -->
 <section class="content container-fluid">
