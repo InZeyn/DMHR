@@ -1,48 +1,83 @@
 ﻿@model IEnumerable<DMHR.Models.Nomina>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de Nominas";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<section class="content-header">
+    <h2 class="login-logo">@ViewData["Title"]</h2>
+    <ol class="breadcrumb">
+        <li><a asp-area="" asp-controller="Home" asp-action="Index"><i class="glyphicon glyphicon-home"></i><span>Inicio</span></a></li>
+        <li><a class="" asp-area="" asp-page="/Nominas"><i class="glyphicon glyphicon-th-large"></i><span>Informes</span></a></li>
+        <li><a class="" asp-area="" asp-page="/Nominas"><span>Nominas</span></a></li>
+    </ol>
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Seleccione un empleado</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <div class="box-body">
+            
+        </div>
+    </div>
+</section>
+<!-- Main content -->
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Date)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MontoTotal)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date.Year)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date.Month)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MontoTotal)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.NominaId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.NominaId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.NominaId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<hr />
+<section class="content container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Permisos</h3>
+                    </div>
+                    <div class="box-body table table-striped ">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Año
+                                    </th>
+                                    <th>
+                                        Mes
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MontoTotal)
+                                    </th>
+                                    <th>
+                                       
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(Item => item.Date.Year)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(Item => item.Date.Month)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(Item => item.MontoTotal)
+                                    </td>
+                                    <td>
+                                        <a asp-action="Edit" asp-route-id="@item.NominaId">Edit</a> |
+                                        <a asp-action="Details" asp-route-id="@item.NominaId">Details</a> |
+                                        <a asp-action="Delete" asp-route-id="@item.NominaId">Delete</a>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="box-footer">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
