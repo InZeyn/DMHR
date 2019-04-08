@@ -44,11 +44,14 @@ namespace DMHR.Controllers
         }
 
         // GET: Licencias/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var empleados = await _context.Empleados.ToListAsync();
+            var ListaEmpleados = new SelectList(empleados, "EmpleadoId", "NombreCompleto");
+            ViewBag.Empleados = ListaEmpleados;
+
             return View();
         }
-
         // POST: Licencias/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
