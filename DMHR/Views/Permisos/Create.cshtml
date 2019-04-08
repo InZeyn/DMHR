@@ -1,53 +1,73 @@
 ﻿@model DMHR.Models.Permiso
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear Permiso";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
-
-<h4>Permiso</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Desde" class="control-label"></label>
-                <input asp-for="Desde" class="form-control" />
-                <span asp-validation-for="Desde" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Hasta" class="control-label"></label>
-                <input asp-for="Hasta" class="form-control" />
-                <span asp-validation-for="Hasta" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Comentarios" class="control-label"></label>
-                <input asp-for="Comentarios" class="form-control" />
-                <span asp-validation-for="Comentarios" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
-                    <label>
-                        <input asp-for="IsPaid" /> @Html.DisplayNameFor(model => model.IsPaid)
-                    </label>
+<section class="content-header">
+    <h2 class="login-logo">@ViewData["Title"]</h2>
+    <ol class="breadcrumb">
+        <li><a asp-area="" asp-controller="Home" asp-action="Index"><i class="glyphicon glyphicon-home"></i><span>Inicio</span> </a></li>
+        <li> <a class="" asp-area="" asp-page="/Permisos/Create"><i class="glyphicon glyphicon-th"></i><span>Procesos</span></a></li>
+        <li> <a class="" asp-area="" asp-page="/Permisos/Create"><span>Permiso</span></a></li>
+    </ol>
+</section>
+<!-- Main content -->
+<section class="content container-fluid">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Permiso</h3>
                 </div>
+                <!-- /.box-header -->
+                <!-- form start -->
+                <form role="form" asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                   
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label asp-for="EmpleadoId" class="control-label"></label>
+                            <div class="selection">
+                                @Html.DropDownListFor(model => model.EmpleadoId,(SelectList)ViewBag.Empleados,
+                               "Seleccione",
+                               new { @class = "form-control" } )
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Desde" class="control-label"></label>
+                            <div class="input-group">
+                                <input asp-for="Desde" type="date" placeholder="Desde" class="form-control" />
+                                <div class="input-group-addon"><div class="fa fa-calendar"></div> </div>
+                            </div>
+                            <span asp-validation-for="Desde" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Hasta" class="control-label"></label>
+                            <div class="input-group">
+
+                                <input asp-for="Hasta" type="date" placeholder="Hasta" class="form-control" />
+                                <div class="input-group-addon"><div class="fa fa-calendar"></div> </div>
+                            </div>
+                            <span asp-validation-for="Hasta" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label class="bg-danger danger">
+                                    <input asp-for="IsPaid" type="checkbox" />
+                                    Son <b>Pagas</b>?
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Crear</button>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="EmpleadoId" class="control-label"></label>
-                <input asp-for="EmpleadoId" class="form-control" />
-                <span asp-validation-for="EmpleadoId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
+</section>

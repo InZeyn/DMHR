@@ -40,7 +40,7 @@ namespace DMHR.Controllers
             {
                 return NotFound();
             }
-
+            
             return View(permiso);
         }
 
@@ -48,7 +48,7 @@ namespace DMHR.Controllers
         public async Task<IActionResult> Create()
         {
             var empleados = await _context.Empleados.ToListAsync();
-            var ListaEmpleados = new SelectList(empleados,"CargoNombre","CargoNombre");
+            var ListaEmpleados = new SelectList(empleados,"EmpleadoId","Nombre");
             ViewBag.Empleados = ListaEmpleados;
 
             return View();
