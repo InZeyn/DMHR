@@ -117,6 +117,31 @@ namespace DMHR.Controllers
             return empleados == null ? NotFound() : (IActionResult)View(await empleados.ToListAsync());
         }
 
+        // GET: Empleados/Permisos/
+
+        public async Task<IActionResult> Permisos()
+        {
+            var empleados = await _context.Empleados.ToListAsync();
+            var ListaEmpleados = new SelectList(empleados,"EmpleadoId","NombreCompleto");
+            ViewBag.Empleados = ListaEmpleados;
+            return View();
+        }
+
+        // GET: Empleados/Permisos/1
+        [HttpPost]
+        public async Task<IActionResult> Permisos(int id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var permisos = _context.Permisos
+                .Where(e => e.EmpleadoId == id);
+
+            return permisos == null ? NotFound() : (IActionResult)View(await permisos.ToListAsync());
+        }
+
         // GET: Empleados/Create
         public async Task<IActionResult> Create()
         {

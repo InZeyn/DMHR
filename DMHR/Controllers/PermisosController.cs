@@ -22,7 +22,7 @@ namespace DMHR.Controllers
         // GET: Permisos
         public async Task<IActionResult> Index()
         {
-
+            
             return View(await _context.Permisos.ToListAsync());
         }
 
@@ -48,7 +48,7 @@ namespace DMHR.Controllers
         public async Task<IActionResult> Create()
         {
             var empleados = await _context.Empleados.ToListAsync();
-            var ListaEmpleados = new SelectList(empleados,"EmpleadoId","Nombre");
+            var ListaEmpleados = new SelectList(empleados,"EmpleadoId","NombreCompleto");
             ViewBag.Empleados = ListaEmpleados;
 
             return View();

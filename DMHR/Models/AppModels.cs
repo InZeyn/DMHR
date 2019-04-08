@@ -27,6 +27,14 @@ namespace DMHR.Models
         [Display(Name = "Estado")]
         public bool IsActive { get; set; }
 
+        public string NombreCompleto
+        {
+            get
+            {
+                return Nombre + " " + Apellido;
+            }
+        }
+
         [Required]
         [Display(Name = "Cargo")]
         public string CargoNombre { get; set; }
