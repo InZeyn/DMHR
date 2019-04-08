@@ -31,16 +31,26 @@ namespace DMHR.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 _indexContext = _indexContext.Where(s => s.Nombre.ToUpper().Contains(searchString.ToUpper())
+                                       || s.Apellido.ToUpper().Contains(searchString.ToUpper())
                                        || s.DepartamentoNombre.ToUpper().Contains(searchString.ToUpper()));
             }
             return View(await _indexContext.AsNoTracking().ToListAsync());
         }
         
         // GET: Empleados!isActive?
-        public async Task<IActionResult> Index2()
+        public async Task<IActionResult> Index2(string searchString)
         {
-            var _indexContext = _context.Empleados.Where(e => !e.IsActive).ToListAsync();
-            return View(await _indexContext);
+            ViewData["CurrentFilter"] = searchString;
+
+            var _indexContext = _context.Empleados.Where(e => !e.IsActive);
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                _indexContext = _indexContext.Where(s => s.Nombre.ToUpper().Contains(searchString.ToUpper())
+                                       || s.Apellido.ToUpper().Contains(searchString.ToUpper())
+                                       || s.DepartamentoNombre.ToUpper().Contains(searchString.ToUpper()));
+            }
+            return View(await _indexContext.AsNoTracking().ToListAsync());
         }
 
         // GET: Empleados/Details/5
