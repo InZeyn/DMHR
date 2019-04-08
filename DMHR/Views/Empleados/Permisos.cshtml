@@ -1,51 +1,74 @@
 ﻿@model IEnumerable<Empleado>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Permisos de empleado";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var getPermiso = false;
     var getVacacion = false;
     var getLicencia = false;
 }
 
+<section class="content-header">
+    <h2 class="login-logo">@ViewData["Title"]</h2>
+    <ol class="breadcrumb">
+        <li><a asp-area="" asp-controller="Home" asp-action="Index"><i class="glyphicon glyphicon-home"></i><span>Inicio</span></a></li>
+        <li><a class="" asp-area="" asp-page="/Empleados/Permisos"><i class="glyphicon glyphicon-th-large"></i><span>Informes</span></a></li>
+        <li><a class="" asp-area="" asp-page="/Empleados/Permisos"><span>Ver permisos</span></a></li>
+    </ol>
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">Seleccione un empleado</h3>
+        </div>
+        <!-- /.box-header -->
+        <!-- form start -->
+        <div class="box-body">
+            <form asp-action="Permisos">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <div class="selection">
+                        @Html.DropDownList("EmpleadoId",(SelectList)ViewBag.Empleados,
+                            "Seleccione",
+                            new { @class = "form-control" } )
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <div class="checkbox">
+                            <label class="">
+                                <input asp-for="@getPermiso" type="checkbox" />
+                                Permisos
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="checkbox">
+                            <label class="">
+                                <input asp-for="@getVacacion" type="checkbox" />
+                                Vacaciones
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="checkbox">
+                            <label class="">
+                                <input asp-for="@getLicencia" type="checkbox" />
+                                Licencias
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="form-group">
+                        <input type="submit" value="submit" class="btn btn-default" />
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+</section>
 <!-- Main content -->
-<form asp-action="Permisos">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group">
-        <div class="selection">
-            @Html.DropDownList("EmpleadoId",(SelectList)ViewBag.Empleados,
-           "Seleccione",
-           new { @class = "form-control" } )
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="checkbox">
-            <label class="">
-                <input asp-for="@getPermiso" type="checkbox" />
-                Permisos
-            </label>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="checkbox">
-            <label class="">
-                <input asp-for="@getVacacion" type="checkbox" />
-                Vacaciones
-            </label>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="checkbox">
-            <label class="">
-                <input asp-for="@getLicencia" type="checkbox" />
-                Licencias
-            </label>
-        </div>
-    </div>
-    <div class="form-group">
-        <input type="submit" value="submit" class="btn btn-default" />
-    </div>
-</form>
+
 <hr />
 <section class="content container-fluid">
     @if (ViewBag.Permisos == null)
@@ -78,22 +101,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                               @foreach (var item in ViewBag.Permisos)
+                                @foreach (var item in ViewBag.Permisos)
                                 {
-                                <tr>
-                                    <td>
-                                        @item.Desde
-                                    </td>
-                                    <td>
-                                        @item.Hasta
-                                    </td>
-                                    <td>
-                                        @item.Comentarios
-                                    </td>
-                                    <td>
-                                        @item.IsPaid
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>
+                                            @item.Desde
+                                        </td>
+                                        <td>
+                                            @item.Hasta
+                                        </td>
+                                        <td>
+                                            @item.Comentarios
+                                        </td>
+                                        <td>
+                                            @item.IsPaid
+                                        </td>
+                                    </tr>
                                 }
                             </tbody>
                         </table>
@@ -105,7 +128,7 @@
             </div>
         </div>
     }
-   @if (ViewBag.Vacaciones == null)
+    @if (ViewBag.Vacaciones == null)
     {
     }
     else
@@ -124,7 +147,7 @@
                                         Desde
                                     </th>
                                     <th>
-                                       Hasta
+                                        Hasta
                                     </th>
                                     <th>
                                         Año
@@ -138,25 +161,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                               @foreach (var item in ViewBag.Vacaciones)
+                                @foreach (var item in ViewBag.Vacaciones)
                                 {
-                                <tr>
-                                    <td>
-                                        @item.Desde
-                                    </td>
-                                    <td>
-                                        @item.Hasta
-                                    </td>
-                                    <td>
-                                        @item.Año
-                                    </td>
-                                    <td>
-                                        @item.Comentarios
-                                    </td>
-                                    <td>
-                                        @item.IsPaid
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>
+                                            @item.Desde
+                                        </td>
+                                        <td>
+                                            @item.Hasta
+                                        </td>
+                                        <td>
+                                            @item.Año
+                                        </td>
+                                        <td>
+                                            @item.Comentarios
+                                        </td>
+                                        <td>
+                                            @item.IsPaid
+                                        </td>
+                                    </tr>
                                 }
                             </tbody>
                         </table>
@@ -168,7 +191,7 @@
             </div>
         </div>
     }
-   @if (ViewBag.Licencias == null)
+    @if (ViewBag.Licencias == null)
     {
     }
     else
@@ -190,7 +213,7 @@
                                         Hasta
                                     </th>
                                     <th>
-                                       Motivo
+                                        Motivo
                                     </th>
                                     <th>
                                         Comentarios
@@ -201,25 +224,25 @@
                                 </tr>
                             </thead>
                             <tbody>
-                               @foreach (var item in ViewBag.Licencias)
+                                @foreach (var item in ViewBag.Licencias)
                                 {
-                                <tr>
-                                    <td>
-                                      @item.Desde
-                                    </td>
-                                    <td>
-                                        @item.Hasta
-                                    </td>
-                                    <td>
-                                        @item.Motivo
-                                    </td>
-                                    <td>
-                                        @item.Comentarios
-                                    </td>
-                                    <td>
-                                        @item.IsPaid
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td>
+                                            @item.Desde
+                                        </td>
+                                        <td>
+                                            @item.Hasta
+                                        </td>
+                                        <td>
+                                            @item.Motivo
+                                        </td>
+                                        <td>
+                                            @item.Comentarios
+                                        </td>
+                                        <td>
+                                            @item.IsPaid
+                                        </td>
+                                    </tr>
                                 }
                             </tbody>
                         </table>
