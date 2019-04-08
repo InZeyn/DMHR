@@ -44,8 +44,12 @@ namespace DMHR.Controllers
         }
 
         // GET: Vacaciones/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
+            var empleados = await _context.Empleados.ToListAsync();
+            var ListaEmpleados = new SelectList(empleados, "EmpleadoId", "NombreCompleto");
+            ViewBag.Empleados = ListaEmpleados;
+
             return View();
         }
 
