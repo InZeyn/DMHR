@@ -129,17 +129,36 @@ namespace DMHR.Controllers
 
         // GET: Empleados/Permisos/1
         [HttpPost]
-        public async Task<IActionResult> Permisos(int id)
+        public async Task<IActionResult> Permisos(int EmpleadoId, bool getPermiso, bool getLicencia, bool getVacacion)
         {
-            if (id == null)
+            if (getPermiso)
             {
-                return NotFound();
+                var permisos = await _context.Permisos
+                .Where(e => e.EmpleadoId == EmpleadoId).ToListAsync();
+                ViewBag.Permisos = permisos;
             }
 
-            var permisos = _context.Permisos
-                .Where(e => e.EmpleadoId == id);
+            if (getVacacion)
+            {
+                var vacaciones = await _context.Vacaciones
+                .Where(e => e.EmpleadoId == EmpleadoId).ToListAsync();
+                ViewBag.Vacaciones = vacaciones;
+            }
 
-            return permisos == null ? NotFound() : (IActionResult)View(await permisos.ToListAsync());
+            if (getLicencia)
+            {
+                var licencias = await _context.Licencias
+               .Where(e => e.EmpleadoId == EmpleadoId).ToListAsync();
+
+                ViewBag.Licencias = licencias;
+
+            }
+
+            var empleados = await _context.Empleados.ToListAsync();
+            var ListaEmpleados = new SelectList(empleados,"EmpleadoId","NombreCompleto");
+            ViewBag.Empleados = ListaEmpleados;
+            
+            return View();
         }
 
         // GET: Empleados/Create
