@@ -1,32 +1,35 @@
 ﻿@model IEnumerable<DMHR.Models.Cargo>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de Cargos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
 <section class="content-header">
-    <h2>Cargo</h2>
-
-    <p>
-        <a asp-action="Create">Crear Cargo</a>
-    </p>
+    <h2 class="login-logo">@ViewData["Title"]</h2>
+    <ol class="breadcrumb">
+        <li><a asp-area="" asp-controller="Home" asp-action="Index"><i class="glyphicon glyphicon-home"></i><span>Home</span> </a></li>
+        <li> <a class="" asp-area="" asp-page="/Cargos"><i class="glyphicon glyphicon-th-large"></i><span>Informes</span></a></li>
+        <li> <a class="" asp-area="" asp-page="/Cargos"><span>Cargos</span></a></li>
+    </ol>
 </section>
 <section class="content container-fluid">
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Cargo de Empleado</h3>
+                    <h3 class="box-title">Cargos Existentes</h3>
                     <div class="box-tools">
-                        <div class="input-group input-group-sm" style="width: 150px;">
-                            <input type="text" name="table_search" class="form-control pull-right" placeholder="Search" />
-                            <div class="input-group-btn">
-                                <button type="submit" class="btn btn-default">
-                                    <i class="fa fa-search"></i>
-                                </button>
+                        <form asp-action="Index" method="get">
+                            <div class="input-group input-group-sm" style="width: 150px;">
+                                <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control pull-right" placeholder="Buscar..." />
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <div class="box-body table table-striped ">
@@ -49,16 +52,16 @@
                                     <td>
                                         <div class="margin">
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-default"><a asp-action="Details" asp-route-id="@item.CargoId">Details</a></button>
+                                                <button type="button" class="btn btn-default"><a asp-action="Details" asp-route-id="@item.CargoId">Detalles</a></button>
                                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                                     <span class="caret"></span>
                                                     <span class="sr-only">Toggle Dropdown</span>
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
-                                                    <li><a asp-action="Edit" asp-route-id="@item.CargoId">Edit</a></li>
-                                                    <li><a asp-action="Details" asp-route-id="@item.CargoId">Details</a></li>
+                                                    <li><a asp-action="Edit" asp-route-id="@item.CargoId">Editar</a></li>
+                                                    <li><a asp-action="Details" asp-route-id="@item.CargoId">Detalles</a></li>
                                                     <li class="divider"></li>
-                                                    <li><a asp-action="Delete" class="bg-red-active " asp-route-id="@item.CargoId">Delete</a></li>
+                                                    <li><a asp-action="Delete" class="bg-red-active " asp-route-id="@item.CargoId">Eliminar</a></li>
                                                 </ul>
                                             </div>
                                         </div>

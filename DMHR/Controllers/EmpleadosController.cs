@@ -161,6 +161,14 @@ namespace DMHR.Controllers
             {
                 return NotFound();
             }
+
+            var cargos = await _context.Cargos.ToListAsync();
+            var departamentos = await _context.Departamentos.ToListAsync();
+
+            var ListaCargos = new SelectList(cargos,"CargoNombre","CargoNombre");
+            ViewBag.Cargos = ListaCargos;
+            var ListaDepartamentos = new SelectList(departamentos,"DepartamentoNombre","DepartamentoNombre");
+            ViewBag.Departamentos = ListaDepartamentos;
             return View(empleado);
         }
 

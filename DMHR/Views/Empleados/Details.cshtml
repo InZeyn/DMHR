@@ -19,7 +19,7 @@
     <div class="">
         <div class="">
             <div class="box box-primary">
-                <div class="box-header with-border">
+                <div class="login-logo with-border">
                 </div>
                 <div class="box-body">
                     <table class="table">
@@ -92,6 +92,8 @@
                         <div class="btn-group">
                             <button type="button" class="btn btn-default"><a asp-action="Edit" asp-route-id="@Model.EmpleadoId">Editar</a></button>
                             <button type="button" class="btn btn-danger"><a asp-action="Delete" asp-route-id="@Model.EmpleadoId">Eliminar</a></button>
+                            <hr />
+                            <a asp-action="Index">Regresar</a>
                         </div>
                     </div>
                 </div>

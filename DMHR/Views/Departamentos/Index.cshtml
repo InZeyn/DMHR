@@ -1,22 +1,23 @@
 ﻿@model IEnumerable<DMHR.Models.Departamento>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Lista de Departamentos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <section class="content-header">
-    <h2>Departamentos</h2>
-
-    <p>
-        <a asp-action="Create">Añadir Departamento</a>
-    </p>
+    <h2 class="login-logo">@ViewData["Title"]</h2>
+    <ol class="breadcrumb">
+        <li><a asp-area="" asp-controller="Home" asp-action="Index"><i class="glyphicon glyphicon-home"></i><span>Home</span> </a></li>
+        <li> <a class="" asp-area="" asp-page="/Departamentos"><i class="glyphicon glyphicon-th-large"></i><span>Informes</span></a></li>
+        <li> <a class="" asp-area="" asp-page="/Departamentos"><span>Departamentos</span></a></li>
+    </ol>
 </section>
 <section class="content container-fluid">
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Departamento Existente</h3>
+                    <h3 class="box-title">Departamentos Existentes</h3>
                     <div class="box-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control pull-right" placeholder="Search" />
