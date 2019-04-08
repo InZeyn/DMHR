@@ -5,6 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <section class="content-header">
     <h2 class="login-logo">@ViewData["Title"]</h2>
     <ol class="breadcrumb">
@@ -13,7 +14,7 @@
         <li> <a class="" asp-area="" asp-page="/Vacaciones/Create"><span>Vacacion</span></a></li>
     </ol>
 </section>
-
+<!-- Main content -->
 <section class="content container-fluid">
     <div class="row">
         <div class="col-md-2"></div>
@@ -22,8 +23,8 @@
                 <div class="box-header with-border">
                     <h3 class="box-title">Vacacion</h3>
                 </div>
-
-
+                <!-- /.box-header -->
+                <!-- form start -->
                 <form role="form" asp-action="Create">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -55,17 +56,15 @@
                         </div>
                         <div class="form-group">
                             <label asp-for="Año" class="control-label"></label>
-                            <div class="input-group">
-
-                                <input asp-for="Año" type="date" placeholder="Año" class="form-control" />
-                                <div class="input-group-addon"><div class="fa fa-calendar"></div> </div>
-                            </div>
+                            <input asp-for="Año" type="number" min="1900" max="9999" placeholder="Año" class="form-control" />
                             <span asp-validation-for="Año" class="text-danger"></span>
                         </div>
                         <div class="form-group">
-                            <label>Textarea</label>
-                            <textarea class="form-control" rows="3" placeholder="Comentario"></textarea>
+                            <label asp-for="Comentarios" class="control-label"></label>
+                            <input asp-for="Comentarios" type="text" placeholder="Comentario" class="form-control" />
+                            <span asp-validation-for="Comentarios" class="text-danger"></span>
                         </div>
+
                         <div class="form-group">
                             <div class="checkbox">
                                 <label class="bg-danger danger">
@@ -75,15 +74,14 @@
                             </div>
                         </div>
                     </div>
-         
-            <div class="box-footer">
-                <button type="submit" class="btn btn-primary">Crear</button>
+                    <!-- /.box-body -->
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary">Crear</button>
+                    </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
-    </div>
 </section>
-
 
 
