@@ -1,58 +1,69 @@
-﻿
-@{ 
- 
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+
 }
 
 <ul class="sidebar-menu" data-widget="tree">
     <li class="header"></li>
     <li class=""> <a asp-area="" asp-controller="Home" asp-action="Index"> <i class="glyphicon glyphicon-home"></i><span>Inicio</span> </a></li>
-    <li class="header">Opciones de Administracion</li>
-    <li class="treeview ">
-        <a href="/Mantenimiento">
-            <i class="glyphicon glyphicon-th-list"></i> <span>Mantenimiento</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li><a asp-area="" asp-controller="Departamentos" asp-action="Create">Añadir Departamento</a></li>
-            <li><a asp-area="" asp-controller="Cargos" asp-action="Create">Crear Cargo</a></li>
-            <li><a asp-area="" asp-controller="Empleados" asp-action="Create">Agregar Empleado</a></li>
-        </ul>
-    </li>
-    <li class="treeview">
-        <a href="/Procesos">
-            <i class="glyphicon glyphicon-th"></i> <span>Procesos</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li><a asp-area="" asp-controller="Nominas" asp-action="Create">Calculos de nomina</a></li>
-            <li><a asp-area="" asp-controller="SalidadeEmpleados" asp-action="Create">Salida de empleados</a></li>
-            <li><a asp-area="" asp-controller="Vacaciones" asp-action="Create">Vacaciones</a></li>
-            <li><a asp-area="" asp-controller="Permisos" asp-action="Create">Permisos</a></li>
-            <li><a asp-area="" asp-controller="Licencias" asp-action="Create">Licencias</a></li>
-        </ul>
-    </li>
-    <li class="treeview">
-        <a href="/Informes">
-            <i class="glyphicon glyphicon-th-large"></i> <span>Informes</span>
-            <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li><a asp-area="" asp-controller="Nominas" asp-action="Index">Registro de Nominas</a></li>
-            <li><a asp-area="" asp-controller="Empleados" asp-action="Index">Empleados Activos</a></li>
-            <li><a asp-area="" asp-controller="Empleados" asp-action="Index2">Empleados Inactivos</a></li>
-            <li><a asp-area="" asp-controller="Departamentos" asp-action="Index">Departamentos Existentes</a></li>
-            <li><a asp-area="" asp-controller="Cargos" asp-action="Index">Cargos Disponibles</a></li>
-            <li><a asp-area="" asp-controller="Empleados" asp-action="Entrys">Entradas de empleados</a></li>
-            <li><a asp-area="" asp-controller="Empleados" asp-action="Exit">Salida de empleados</a></li>
-            <li><a asp-area="" asp-controller="Empleados" asp-action="Permisos">Permisos</a></li>
-        </ul>
-    </li>
+    @if (!SignInManager.IsSignedIn(User))
+    {
+
+    }
+    else
+    {
+        <li class="header">Opciones de Administracion</li>
+        <li class="treeview ">
+            <a href="/Mantenimiento">
+                <i class="glyphicon glyphicon-th-list"></i> <span>Mantenimiento</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a asp-area="" asp-controller="Departamentos" asp-action="Create">Añadir Departamento</a></li>
+                <li><a asp-area="" asp-controller="Cargos" asp-action="Create">Crear Cargo</a></li>
+                <li><a asp-area="" asp-controller="Empleados" asp-action="Create">Agregar Empleado</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="/Procesos">
+                <i class="glyphicon glyphicon-th"></i> <span>Procesos</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a asp-area="" asp-controller="Nominas" asp-action="Create">Calculos de nomina</a></li>
+                <li><a asp-area="" asp-controller="SalidadeEmpleados" asp-action="Create">Salida de empleados</a></li>
+                <li><a asp-area="" asp-controller="Vacaciones" asp-action="Create">Vacaciones</a></li>
+                <li><a asp-area="" asp-controller="Permisos" asp-action="Create">Permisos</a></li>
+                <li><a asp-area="" asp-controller="Licencias" asp-action="Create">Licencias</a></li>
+            </ul>
+        </li>
+        <li class="treeview">
+            <a href="/Informes">
+                <i class="glyphicon glyphicon-th-large"></i> <span>Informes</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a asp-area="" asp-controller="Nominas" asp-action="Index">Registro de Nominas</a></li>
+                <li><a asp-area="" asp-controller="Empleados" asp-action="Index">Empleados Activos</a></li>
+                <li><a asp-area="" asp-controller="Empleados" asp-action="Index2">Empleados Inactivos</a></li>
+                <li><a asp-area="" asp-controller="Departamentos" asp-action="Index">Departamentos Existentes</a></li>
+                <li><a asp-area="" asp-controller="Cargos" asp-action="Index">Cargos Disponibles</a></li>
+                <li><a asp-area="" asp-controller="Empleados" asp-action="Entrys">Entradas de empleados</a></li>
+                <li><a asp-area="" asp-controller="Empleados" asp-action="Exit">Salida de empleados</a></li>
+                <li><a asp-area="" asp-controller="Empleados" asp-action="Permisos">Permisos</a></li>
+            </ul>
+        </li>
+    }
+
     <li class="header">Opciones de Usuario</li>
     <!-- Optionally, you can add icons to the links -->
     <partial name="_LoginPartial" />
