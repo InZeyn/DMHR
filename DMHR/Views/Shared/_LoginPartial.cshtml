@@ -5,38 +5,40 @@
 
 @if (SignInManager.IsSignedIn(User))
 {
-    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
-        <ul class="nav navbar-nav navbar-right">
-            <li>
+    <br />
+    <a href="#">
+        <i class="fa fa-link col-md-offset-1"></i> <span>Cuenta</span>
+    </a>
+    <br />
+    <br />
+    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-left col-md-offset-1">
+        <div class="nav navbar-nav navbar-right">
+            <div>
                 <a class="" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @UserManager.GetUserName(User)!</a>
-            </li>
-            <li>
+            </div>
+
+            <div>
                 <button type="submit" class="btn btn-link navbar-btn navbar-link">Logout</button>
-            </li>
-        </ul>
+            </div>
+        </div>
     </form>
 }
 else
 {
     <li class="treeview">
         <a href="#">
-            <i class="fa fa-link"></i> <span>Account</span>
+            <i class="fa fa-link"></i> <span>Cuenta</span>
             <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
             </span>
         </a>
         <ul class="treeview-menu">
             <li>
-                @*<div class="pull-left">*@
                 <a class="" asp-area="Identity" asp-page="/Account/Register"><span>Register</span></a>
-                @*</div>*@
             </li>
             <li>
-                @*<div class="pull-right">*@
                 <a class="" asp-area="Identity" asp-page="/Account/Login"><span>Login</span></a>
-                @*</div>*@
             </li>
-
         </ul>
     </li>
 }

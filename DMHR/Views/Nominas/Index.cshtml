@@ -14,17 +14,52 @@
     </ol>
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h3 class="box-title">Seleccione un empleado</h3>
+            <h3 class="box-title">Digite un Mes o un Año</h3>
         </div>
         <!-- /.box-header -->
         <!-- form start -->
         <div class="box-body">
-            
+            @{
+                var fechaIngreso = new DateTime();
+                var getMonth = false;
+                var getYear = false;
+            }
+            <form asp-action="">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <div class="form-group">
+                        <input asp-for="@fechaIngreso" value="" placeholder="January 2019 or 01/2019" type="month" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-4">
+                        <div class="checkbox">
+                            <label class="">
+                                <input asp-for="@getMonth" type="checkbox" />
+                                Mes
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <div class="checkbox">
+                            <label class="">
+                                <input asp-for="@getYear" type="checkbox" />
+                                Año
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <div class="form-group">
+                        <input type="submit" value="submit" class="btn btn-default" />
+                    </div>
+                </div>
+
+            </form>
         </div>
     </div>
 </section>
 <!-- Main content -->
-
 <hr />
 <section class="content container-fluid">
         <div class="row">

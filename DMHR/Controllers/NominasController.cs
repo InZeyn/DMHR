@@ -24,6 +24,33 @@ namespace DMHR.Controllers
         {
             return View(await _context.Nominas.ToListAsync());
         }
+        
+        // POST: Nominas
+        [HttpPost]
+        public async Task<IActionResult> Index(DateTime fechaIngreso,bool getMonth,bool getYear)
+        {
+            if (getMonth || getMonth && getYear)
+            {
+                var nominas = await _context.Nominas
+                .Where(e => e.Date.Month == fechaIngreso.Month).ToListAsync();
+                ViewBag.Nominas = nominas;
+                return View(await _context.Nominas
+                .Where(e => e.Date.Month == fechaIngreso.Date.Month).ToListAsync());
+               
+            }
+
+            if (getYear && !getMonth)
+            {
+                var nominasYear = await _context.Nominas
+                .Where(e => e.Date.Year == fechaIngreso.Date.Year).ToListAsync();
+                ViewBag.NominasYear = nominasYear;
+                return View(await _context.Nominas
+                .Where(e => e.Date.Year == fechaIngreso.Date.Year).ToListAsync());
+               
+            }
+
+            return View(await _context.Nominas.ToListAsync());
+        }
 
         // GET: Nominas/Details/5
         public async Task<IActionResult> Details(int? id)
